@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cuda_runtime.h>
+#include <fmt/format.h>
 
 
 __global__ 
@@ -23,6 +24,6 @@ int main(){
     cudaFree(pd);
     //res = *pd;
 
-    std::cout << "hello world: " << res << std::endl;
+    std::cout << fmt::format("hello {} world: ", "formated") << res << std::endl;
     return 0;
 }

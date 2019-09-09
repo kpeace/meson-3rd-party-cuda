@@ -1,6 +1,10 @@
-project('hello-cuda', 'cpp', 'cuda')
+project('hello-3rd-party-cuda', 'cpp', 'cuda')
 
-cuda_comp = meson.get_compiler('cuda')
-cuda = import('unstable-cuda')
-nvcc_flags = cuda.nvcc_arch_flags(cuda_comp, 'Auto')
-executable('hello-cuda', 'hello.cu', cuda_args : nvcc_flags)
+# get conan dependencies
+run_command('conan', 'install', '--install-folder', meson.build_root(), meson.source_root(), check: true)
+
+fmt_dep = dependency('fmt')
+
+executable('hello-3rd-party-cuda', 'hello.cu',
+    dependencies : [fmt_dep],
+)
