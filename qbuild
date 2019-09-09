@@ -1,0 +1,1 @@
+if [ -d "build" ]; then rm -r build; fi && ~/worksapce/meson-agurtovoy/meson.py setup --pkg-config-path "build" build src && ninja -C build
